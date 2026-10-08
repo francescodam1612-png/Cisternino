@@ -1,0 +1,903 @@
+# Cisternino
+Descrizione del sito  Questo sito è dedicato a Cisternino e al suo patrimonio storico, culturale e paesaggistico. Presenta le principali chiese, le campagne, le tradizioni e i luoghi caratteristici del territorio, con un approfondimento particolare su Contrada Lama Cesare e il Santuario della Madonna d’Ibernia. 
+[index.html](https://github.com/user-attachments/files/33206326/index.html)
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cisternino | Chiese, campagne e cultura</title>
+
+    <meta name="description"
+          content="Un viaggio alla scoperta di Cisternino, delle sue chiese, delle campagne della Valle d'Itria e di Contrada Lama Cesare.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --verde: #3d5a40;
+            --verde-scuro: #263b2b;
+            --oliva: #7d8b55;
+            --crema: #f5efe2;
+            --bianco: #fffdf8;
+            --marrone: #73543c;
+            --oro: #c69c55;
+            --testo: #333333;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: var(--crema);
+            color: var(--testo);
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+
+        header {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(20,35,23,.55), rgba(20,35,23,.65)),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20-%20View%20from%20Villa%20Comunale%20-%202.jpg")
+                center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 7%;
+            background: rgba(25,40,28,.55);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e8c783;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px 120px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 3px 8px #000;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 13px 28px;
+            border-radius: 30px;
+            background: var(--oro);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .button:hover {
+            background: #a97d39;
+            transform: translateY(-3px);
+        }
+
+        /* SEZIONI */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: var(--verde);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            max-width: 750px;
+            margin: auto;
+            color: #666;
+        }
+
+        .intro {
+            max-width: 950px;
+            margin: auto;
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bianco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.12);
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: var(--verde);
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+
+        /* CHIESE */
+
+        #chiese {
+            background: white;
+        }
+
+        /* CAMPAGNA */
+
+        .campagna {
+            background:
+                linear-gradient(rgba(42,63,44,.86), rgba(42,63,44,.86)),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Alba%20vista%20dietro%20i%20trulli%20della%20Masseria%20Peppeturro%20a%20Cisternino.jpg")
+                center/cover;
+            color: white;
+        }
+
+        .campagna .section-title h2,
+        .campagna .section-title p {
+            color: white;
+        }
+
+        .campagna-content {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 1.1rem;
+        }
+
+        .campagna-content p {
+            margin-bottom: 20px;
+        }
+
+        /* LAMA CESARE */
+
+        #lama-cesare {
+            background: #eee6d5;
+        }
+
+        .lama-box {
+            max-width: 1100px;
+            margin: auto;
+            background: var(--bianco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,.15);
+        }
+
+        .lama-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .lama-text {
+            padding: 45px;
+        }
+
+        .lama-text h3 {
+            color: var(--verde);
+            font-size: 2rem;
+            margin: 25px 0 10px;
+        }
+
+        .highlight {
+            border-left: 5px solid var(--oro);
+            padding: 20px 25px;
+            margin: 30px 0;
+            background: #f7f1e4;
+            font-style: italic;
+        }
+
+        /* CULTURA */
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .culture-grid img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.15);
+        }
+
+        .culture-grid h3 {
+            color: var(--verde);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .culture-grid p {
+            margin-bottom: 18px;
+        }
+
+        /* TRADIZIONI */
+
+        .tradizioni {
+            background: #f8f5ec;
+        }
+
+        .tradizioni-list {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .tradizione {
+            display: flex;
+            gap: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .numero {
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--verde);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: bold;
+        }
+
+        .tradizione h3 {
+            color: var(--marrone);
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--verde-scuro);
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #d7dfd5;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .lama-image {
+                height: 280px;
+            }
+
+            .lama-text {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header id="home">
+
+    <nav>
+        <div class="logo">CISTERNINO</div>
+
+        <ul>
+            <li><a href="#storia">Storia</a></li>
+            <li><a href="#chiese">Chiese</a></li>
+            <li><a href="#campagne">Campagne</a></li>
+            <li><a href="#lama-cesare">Lama Cesare</a></li>
+            <li><a href="#cultura">Cultura</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Cisternino</h1>
+
+        <p>
+            Tra pietra bianca, ulivi, trulli, chiese e antiche tradizioni
+            nel cuore della Valle d'Itria.
+        </p>
+
+        <a class="button" href="#storia">Scopri il territorio</a>
+    </div>
+
+</header>
+
+
+<!-- STORIA -->
+
+<section id="storia">
+
+    <div class="section-title">
+        <h2>Un paese tra storia e paesaggio</h2>
+
+        <p>
+            Cisternino è uno dei luoghi più caratteristici della Valle d'Itria,
+            dove il centro abitato e la campagna formano un unico paesaggio
+            culturale.
+        </p>
+    </div>
+
+    <div class="intro">
+
+        <p>
+            Il centro storico conserva un impianto medievale caratterizzato
+            da vicoli, archi, scale, balconi e abitazioni imbiancate a calce.
+            La pietra e il colore bianco sono elementi fondamentali
+            dell'identità architettonica del paese.
+        </p>
+
+        <br>
+
+        <p>
+            Dalla parte alta dell'abitato lo sguardo si apre verso la Valle
+            d'Itria, creando un rapporto particolarmente suggestivo tra
+            l'architettura urbana e il paesaggio rurale.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CHIESE -->
+
+<section id="chiese">
+
+    <div class="section-title">
+
+        <h2>Le chiese di Cisternino</h2>
+
+        <p>
+            Gli edifici religiosi raccontano secoli di storia, devozione,
+            arte e tradizioni popolari.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <article class="card">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20-%20Torre%20Civica%20e%20Chiesa%20Madre%20di%20San%20Nicola.JPG"
+                alt="Chiesa Madre di San Nicola a Cisternino">
+
+            <div class="card-content">
+
+                <h3>Chiesa Madre di San Nicola</h3>
+
+                <p>
+                    Nel cuore del centro storico si trova la Chiesa Madre
+                    dedicata a San Nicola. L'edificio costituisce uno dei
+                    principali punti di riferimento religiosi e artistici
+                    di Cisternino.
+                </p>
+
+                <p>
+                    Al suo interno sono conservate opere d'arte legate alla
+                    tradizione scultorea pugliese, tra cui opere attribuite
+                    a Stefano da Putignano.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20-%20chiesa%20di%20Cristo%20-%202026-09-29%2015-19-14%20001.jpg"
+                alt="Chiesa di Cristo a Cisternino">
+
+            <div class="card-content">
+
+                <h3>La Chiesa di Cristo</h3>
+
+                <p>
+                    La Chiesa di Cristo rappresenta un altro elemento del
+                    patrimonio religioso di Cisternino e testimonia la
+                    presenza di differenti luoghi di culto distribuiti
+                    dentro e intorno al centro abitato.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chiesa%20dei%20Santissimi%20Medici%2C%20Contrada%20Marinelli%2C%20Cisternino.jpg"
+                alt="Chiesa dei Santissimi Medici">
+
+            <div class="card-content">
+
+                <h3>Le chiese delle contrade</h3>
+
+                <p>
+                    Il patrimonio religioso non si limita al centro storico.
+                    Nelle contrade sono presenti piccole chiese e santuari
+                    che mantengono un forte legame con le comunità rurali.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- CAMPAGNE -->
+
+<section id="campagne" class="campagna">
+
+    <div class="section-title">
+
+        <h2>La campagna di Cisternino</h2>
+
+        <p>
+            Ulivi, muretti a secco, trulli, masserie e strade rurali:
+            il paesaggio agricolo è parte integrante della cultura locale.
+        </p>
+
+    </div>
+
+
+    <div class="campagna-content">
+
+        <p>
+            Intorno a Cisternino si sviluppa un paesaggio rurale tipico
+            della Valle d'Itria. Gli ulivi secolari convivono con mandorli,
+            vigneti, orti e piccoli appezzamenti delimitati da muretti
+            costruiti con la pietra locale.
+        </p>
+
+        <p>
+            I trulli e le masserie non sono soltanto elementi estetici:
+            per secoli sono stati parte dell'organizzazione economica
+            e agricola del territorio.
+        </p>
+
+        <p>
+            La campagna rappresenta quindi una vera e propria memoria
+            del lavoro contadino. Ogni muro a secco, cisterna, lamia,
+            trullo e masseria può essere letto come una traccia della
+            relazione tra l'uomo e l'ambiente.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LAMA CESARE -->
+
+<section id="lama-cesare">
+
+    <div class="section-title">
+
+        <h2>Contrada Lama Cesare</h2>
+
+        <p>
+            Un territorio rurale dove paesaggio, religiosità e memoria
+            si incontrano.
+        </p>
+
+    </div>
+
+
+    <div class="lama-box">
+
+        <img
+            class="lama-image"
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ponte%20canale%20Figazzano.jpg"
+            alt="Paesaggio rurale della Valle d'Itria nei pressi di Cisternino">
+
+        <div class="lama-text">
+
+            <h3>Il nome della contrada</h3>
+
+            <p>
+                Lama Cesare è una contrada del territorio di Cisternino.
+                Nella documentazione sull'odonimia extraurbana compare
+                la forma “Lama Cesare”, mentre “Lamacesare” è una forma
+                utilizzata nella toponomastica corrente e in diversi
+                indirizzi.
+            </p>
+
+
+            <div class="highlight">
+
+                Lama Cesare è particolarmente significativa perché
+                conserva un importante luogo di culto immerso nel
+                paesaggio rurale: il Santuario della Madonna d'Ibernia,
+                conosciuto anche come Madonna de Bernis.
+
+            </div>
+
+
+            <h3>Il Santuario della Madonna d'Ibernia</h3>
+
+            <p>
+                Fuori dall'abitato di Cisternino, in contrada Lama Cesare,
+                sorge il Santuario della Madonna d'Ibernia o de Bernis.
+                Il Comune di Cisternino lo indica espressamente come uno
+                dei luoghi di culto del territorio.
+            </p>
+
+            <p>
+                Il santuario è legato a una tradizione religiosa molto
+                particolare, connessa ai temi della fertilità e
+                dell'abbondanza. Secondo la tradizione locale, questi
+                temi si collegano a culti molto più antichi presenti
+                nell'area.
+            </p>
+
+
+            <h3>La tradizione del lunedì di Pasqua</h3>
+
+            <p>
+                Uno degli aspetti più interessanti è la tradizione
+                legata al lunedì di Pasqua. In questa occasione viene
+                portato in dono alla Madonna un dolce tradizionale,
+                legato simbolicamente al tema della fertilità.
+            </p>
+
+            <p>
+                La festa mostra come una tradizione religiosa possa
+                conservare elementi molto più antichi della cultura
+                popolare, trasformandoli nel corso dei secoli.
+            </p>
+
+
+            <h3>Un paesaggio da conoscere</h3>
+
+            <p>
+                L'importanza di Lama Cesare non è quindi limitata al
+                santuario. La contrada permette di osservare il rapporto
+                tra architettura rurale, strade vicinali, terreni agricoli,
+                uliveti e strutture tradizionali.
+            </p>
+
+            <p>
+                Nella zona sono documentate anche masserie e complessi
+                rurali con trulli, che testimoniano l'organizzazione
+                storica del territorio agricolo.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CULTURA -->
+
+<section id="cultura">
+
+    <div class="section-title">
+
+        <h2>La cultura cistranese</h2>
+
+        <p>
+            Una cultura costruita attraverso il territorio, il lavoro,
+            la religione, la cucina e le feste popolari.
+        </p>
+
+    </div>
+
+
+    <div class="culture-grid">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20banner.jpg"
+            alt="Panorama di Cisternino">
+
+        <div>
+
+            <h3>Una cultura legata al territorio</h3>
+
+            <p>
+                A Cisternino la cultura non vive soltanto nei musei o nei
+                monumenti. È presente nelle strade del centro storico,
+                nelle campagne, nelle feste religiose e nelle tradizioni
+                gastronomiche.
+            </p>
+
+            <p>
+                La cucina tradizionale è uno degli elementi più riconoscibili
+                dell'identità locale. La carne alla brace e le celebri
+                bombette sono diventate simboli della gastronomia
+                cistranese.
+            </p>
+
+            <p>
+                Anche il paesaggio contribuisce alla cultura: il trullo,
+                il muro a secco, la masseria, l'ulivo e la piccola chiesa
+                rurale raccontano la storia di generazioni di abitanti.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TRADIZIONI -->
+
+<section class="tradizioni">
+
+    <div class="section-title">
+
+        <h2>Tradizioni da ricordare</h2>
+
+        <p>
+            Alcuni elementi che aiutano a comprendere l'identità
+            culturale di Cisternino.
+        </p>
+
+    </div>
+
+
+    <div class="tradizioni-list">
+
+        <div class="tradizione">
+
+            <div class="numero">1</div>
+
+            <div>
+                <h3>Le feste religiose</h3>
+
+                <p>
+                    Le feste patronali e le processioni mantengono vivo
+                    il rapporto tra comunità, territorio e fede.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="tradizione">
+
+            <div class="numero">2</div>
+
+            <div>
+                <h3>La cucina</h3>
+
+                <p>
+                    La gastronomia rappresenta uno dei modi più immediati
+                    per conoscere la storia e le abitudini delle comunità
+                    della Valle d'Itria.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="tradizione">
+
+            <div class="numero">3</div>
+
+            <div>
+                <h3>Il paesaggio rurale</h3>
+
+                <p>
+                    Trulli, ulivi, masserie e muretti a secco costituiscono
+                    un patrimonio materiale che racconta il lavoro agricolo
+                    delle generazioni passate.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="tradizione">
+
+            <div class="numero">4</div>
+
+            <div>
+                <h3>Le contrade</h3>
+
+                <p>
+                    Le contrade conservano una dimensione più rurale del
+                    territorio e permettono di comprendere il legame tra
+                    abitazioni, campagna, strade e luoghi di culto.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERIA -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>Galleria di Cisternino</h2>
+
+        <p>
+            Alcune immagini rappresentative del centro e del paesaggio.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20-%20View%20from%20Villa%20Comunale%20-%202.jpg"
+            alt="Panorama di Cisternino">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20-%20Torre%20Civica%20e%20Chiesa%20Madre%20di%20San%20Nicola.JPG"
+            alt="Torre e Chiesa Madre di Cisternino">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Alba%20vista%20dietro%20i%20trulli%20della%20Masseria%20Peppeturro%20a%20Cisternino.jpg"
+            alt="Trulli e campagna di Cisternino">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Arco%20cisternino%20centro%20storico.jpg"
+            alt="Arco del centro storico">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cisternino%20Sunset.jpg"
+            alt="Tramonto su Cisternino">
+
+        <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Old%20Trullo%20%282798091076%29.jpg"
+            alt="Antico trullo nella campagna">
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>Cisternino</h2>
+
+    <p>
+        Un territorio da conoscere attraverso le sue pietre,
+        le sue campagne e le sue tradizioni.
+    </p>
+
+    <p style="margin-top:20px; font-size:.9rem;">
+        Progetto culturale dedicato a Cisternino e alla Valle d'Itria
+    </p>
+
+</footer>
+
+
+</body>
+</html>
